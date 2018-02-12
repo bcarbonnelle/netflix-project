@@ -18,8 +18,7 @@ server.route({
     handler: async (request, h) =>{
         const lst = await movie.find();
 
-        return lst.length;
-        //return 'hello world';
+        return list;
     }
 });
 
@@ -29,7 +28,6 @@ server.route({
     handler: async (request, h) =>{
         const lst = await movie.find();
 
-        console.log(lst.length)
         return lst.length;
     }
 });
@@ -37,11 +35,34 @@ server.route({
 server.route({
     method: 'GET',
     path:'/api/movies/{id}', 
-    handler: function (request, h) {
+    handler: async (request, h) => {
+        
+        return await movie.findOne({id:request.params.id});
 
-        return 'detail film' + request.params.id;
     }
 });
+
+server.route({
+    method: 'POST',
+    path:'/api/movies', 
+    handler: async (request, h) => {
+        
+        return ;
+
+    }
+});
+
+server.route({
+    method: 'PUT',
+    path:'/api/movies/{id}', 
+    handler: async (request, h) => {
+        
+        const film = await movie.findByIdAndUpdate({id:request.params.id});
+        return "success"
+
+    }
+});
+
 
 
 // Start the server
