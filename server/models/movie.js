@@ -30,7 +30,7 @@ const schema = new mongoose.Schema({
         type: String
     },
     genre_ids: {
-        type: String
+        type: [String]
     },
     backdrop_path: {
         type: String
