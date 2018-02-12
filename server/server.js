@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
-const movie = mongoose.model('movie')
-'use strict';
+require(`${process.cwd()}/models/movie`);
+const mongoose = require('mongoose');
+const movie = mongoose.model('movie');
+
 
 const Hapi = require('hapi');
 
@@ -13,11 +14,11 @@ const server = Hapi.server({
 // Add the route
 server.route({
     method: 'GET',
-    path:'/hello', 
+    path:'/', 
     handler: async (request, h) =>{
         const lst = await movie.find();
 
-        console.log(lst.length)
+        return lst.length;
         //return 'hello world';
     }
 });
@@ -29,7 +30,7 @@ server.route({
         const lst = await movie.find();
 
         console.log(lst.length)
-        //return 'hello world';
+        return lst.length;
     }
 });
 

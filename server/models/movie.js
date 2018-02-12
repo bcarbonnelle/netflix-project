@@ -1,24 +1,24 @@
-import { boolean, date } from '../../../../../../.cache/typescript/2.6/node_modules/@types/joi';
+//import { boolean, date } from '../../../../../../.cache/typescript/2.6/node_modules/@types/joi';
 
 const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
     vote_count: {
-        type: number
+        type: Number
     },
     id: {
-        type: number
+        type: Number
     },
     video: {
         type: String
     },
     vote_average: {
-        type: number
+        type: Number
     },
     title: {
         type: String
     },
     popularity: {
-        type: number
+        type: Number
     },
     poster_path: {
         type: String
@@ -36,13 +36,13 @@ const schema = new mongoose.Schema({
         type: String
     },
     adult: {
-        type: boolean
+        type: Boolean
     },
     overview: {
         type: String
     },
     release_date: {
-        type: date
+        type: String
     }
 })
 
