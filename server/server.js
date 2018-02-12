@@ -1,6 +1,6 @@
 require(`${process.cwd()}/models/movie`);
 const mongoose = require('mongoose');
-const movie = mongoose.model('movie');
+const Movie = mongoose.model('movie');
 
 
 const Hapi = require('hapi');
@@ -16,7 +16,7 @@ server.route({
     method: 'GET',
     path:'/', 
     handler: async (request, h) =>{
-        const lst = await movie.find();
+        const lst = await Movie.find();
 
         return list;
     }
@@ -26,7 +26,7 @@ server.route({
     method: 'GET',
     path:'/api/movies', 
     handler: async (request, h) =>{
-        const lst = await movie.find();
+        const lst = await Movie.find();
 
         return lst;
     }
@@ -37,7 +37,7 @@ server.route({
     path:'/api/movies/{id}', 
     handler: async (request, h) => {
         
-        return await movie.findOne({id:request.params.id});
+        return await Movie.findOne({id:request.params.id});
 
     }
 });
@@ -46,8 +46,9 @@ server.route({
     method: 'POST',
     path:'/api/movies', 
     handler: async (request, h) => {
-        
-        return ;
+        let movie = new Movie(request.payload);
+        await movie.save();
+        return 'success';
 
     }
 });
@@ -56,12 +57,17 @@ server.route({
     method: 'PUT',
     path:'/api/movies/{id}', 
     handler: async (request, h) => {
-        
-        const film = await movie.findByIdAndUpdate({id:request.params.id});
-        return "success"
-
+              
+       
+        return await  Movie.findByIdAndUpdate(
+            request.params.id,
+            {$set:request.payload},
+            {new:true}
+        );
     }
 });
+
+
 
 
 
