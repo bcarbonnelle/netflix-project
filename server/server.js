@@ -28,7 +28,7 @@ server.route({
     handler: async (request, h) =>{
         const lst = await movie.find();
 
-        return lst.length;
+        return lst;
     }
 });
 
