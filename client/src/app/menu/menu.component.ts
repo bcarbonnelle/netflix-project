@@ -9,23 +9,39 @@ import { Movie } from '../shared/models/movieModel';
 })
 export class MenuComponent implements OnInit {
   catalogue: Movie[];
+
+  rows: [Movie[]];
+
   constructor(public movieService: MovieService) {
     this.catalogue = new Array;
+    this.rows = [[]];
+
+
   }
 
   ngOnInit() {
 
-
     let streamData;
-
+    let index = 0;
+    let row = [];
+    let count = 0;
     this.movieService.getAll().then(result => {
-      (result as Movie[]).map(movie => this.catalogue.push(movie as Movie));
+      count = (result as Movie[]).length;
+      (result as Movie[]).map(movie => {
+
+        this.catalogue.push(movie as Movie);
+        row.push(movie as Movie);
+        index++;
+        count--;
+        if (index == 4 || count == 0) {
+          this.rows.push(row);
+          row = [];
+          index = 0;
+        }
+
+      });
+      console.log(this.rows);
 
     });
-    // streamData=result.toString()).catch(err=> console.log(err)).then(streamData.map(function(currentValue, index, arr){
-
-    //   let newMovie = new Movie(currentValue.vote_count,currentValue.id,currentValue.video,currentValue.vote_average,currentValue.title,currentValue.popularity,currentValue.poster_path,currentValue.original_Language,currentValue.original,currentValue.genre_ids,currentValue.backdrop_path,currentValue.adult,currentValue.overview,currentValue.release_date,currentValue.fileName);
-    //   this.catalogue.push(newMovie)
-    // }))
   }
 }
