@@ -1,0 +1,57 @@
+.movie{  
+    
+    float: left;
+    width:22%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    margin: 0 20px;
+    overflow: hidden;
+    
+    
+}
+.movie:hover img{
+    width: 120%;
+    transform: translate(-10%,-10%);
+    transition: all 4s;
+}
+.movie:hover > .backround-title{
+    z-index: 10000;
+}
+.backround-title{
+    background-color: white;
+    position: absolute;
+    opacity: 0.8;
+    bottom: 0;
+    
+    z-index: -10000;  
+    padding: 20px;
+
+}
+
+.title{
+    
+    color: black;
+    
+}
+img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 1.5s;
+
+}
+.title p{
+    max-height: 90px;
+    margin: 3px;
+    font-size: 0.8em;
+}
+.title h1{
+    font-size: 1.4em;
+    margin: 2px;
+}
+.title h2{
+    font-size: 1em;
+    margin: 2px;
+}

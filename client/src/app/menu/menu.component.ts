@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../shared/movie.service'
+import { MovieService } from '../shared/movie.service';
 import { Movie } from '../shared/models/movieModel';
 
 @Component({
@@ -11,10 +11,11 @@ export class MenuComponent implements OnInit {
   catalogue: Movie[]
   
   rows: [Movie[]]
-
+  count: Number;
   constructor(public movieService: MovieService) { 
     this.catalogue = new Array;
     this.rows = [[]];
+    this.count=0;
     
 
   }
@@ -24,7 +25,7 @@ export class MenuComponent implements OnInit {
     let streamData;
     let index=0;
     let row=[];
-    let count=0;
+    let count;
     this.movieService.getAll().then(result=> {
       count=(result as Movie[]).length;
       (result as Movie[]).map(movie=>{
@@ -40,8 +41,13 @@ export class MenuComponent implements OnInit {
         }
         
       });
+      this.rows.shift();
       console.log(this.rows)
     });
+    this.movieService.getNumberOfMovies().then(result =>{
+      this.count=(result as Number);
+    });
+    
 
   }
 

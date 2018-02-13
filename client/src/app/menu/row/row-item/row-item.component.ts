@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Movie } from '../../../shared/models/movieModel';
 
 @Component({
   selector: 'app-row-item',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./row-item.component.css']
 })
 export class RowItemComponent implements OnInit {
-
+  @Input() movie:Movie;
   constructor() { }
 
   ngOnInit() {

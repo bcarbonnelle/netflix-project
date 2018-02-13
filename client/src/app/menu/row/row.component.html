@@ -1,3 +1,7 @@
-<p>
-  row works!
-</p>
+
+<div class="catalogue">
+  <div class="row">
+      <app-row-item *ngFor="let movie of row" [movie]="movie"></app-row-item>
+  </div>
+</div>
+
