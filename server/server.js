@@ -8,7 +8,8 @@ const Hapi = require('hapi');
 // Create a server with a host and port
 const server = Hapi.server({ 
     host: 'localhost', 
-    port: 8069 
+    port: 8069,
+    routes: {cors: {origin: ['*']} } 
 });
 
 // Add the route
@@ -59,15 +60,29 @@ server.route({
     handler: async (request, h) => {
               
        
-        return await  Movie.findByIdAndUpdate(
-            request.params.id,
+        // return await  Movie.findByIdAndUpdate(
+        //     request.params.id,
+        //     {$set:request.payload},
+        //     {new:true}
+        // );
+        return await  Movie.findOneAndUpdate(
+            {id:request.params.id},
             {$set:request.payload},
             {new:true}
         );
     }
 });
 
+server.route({
+    method: 'DELETE',
+    path:'/api/movies/{id}', 
+    handler: async (request, h) => {
+        
+        await Movie.findOneAndRemove({id:request.params.id});
+        return 'success';
 
+    }
+});
 
 
 
