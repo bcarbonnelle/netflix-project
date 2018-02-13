@@ -8,8 +8,13 @@ const Hapi = require('hapi');
 // Create a server with a host and port
 const server = Hapi.server({ 
     host: 'localhost', 
+<<<<<<< HEAD
     port: 8069,
     routes: {cors: {origin: ['*']} } 
+=======
+    port: 8069 ,
+    routes:{cors:{origin:['*']}}
+>>>>>>> 68af1d27d4730dcf48f844895f5552ad0d12d79e
 });
 
 // Add the route
