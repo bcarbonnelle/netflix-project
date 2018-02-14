@@ -8,13 +8,14 @@ import { Movie } from '../shared/models/movieModel';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  catalogue: Movie[];
+  catalogue: Movie[]
 
-  rows: [Movie[]];
-
+  rows: [Movie[]]
+  count: Number;
   constructor(public movieService: MovieService) {
     this.catalogue = new Array;
     this.rows = [[]];
+    this.count=0;
 
 
   }
@@ -22,12 +23,12 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
 
     let streamData;
-    let index = 0;
-    let row = [];
-    let count = 0;
-    this.movieService.getAll().then(result => {
-      count = (result as Movie[]).length;
-      (result as Movie[]).map(movie => {
+    let index=0;
+    let row=[];
+    let count;
+    this.movieService.getAll().then(result=> {
+      count=(result as Movie[]).length;
+      (result as Movie[]).map(movie=>{
 
         this.catalogue.push(movie as Movie);
         row.push(movie as Movie);
@@ -40,8 +41,14 @@ export class MenuComponent implements OnInit {
         }
 
       });
-      console.log(this.rows);
-
+      this.rows.shift();
+      console.log(this.rows)
     });
+    this.movieService.getNumberOfMovies().then(result =>{
+      this.count=(result as Number);
+    });
+
+
+
   }
 }

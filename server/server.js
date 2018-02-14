@@ -32,7 +32,15 @@ server.route({
         return lst;
     }
 });
+server.route({
+    method: 'GET',
+    path:'/api/movies/count', 
+    handler: async (request, h) => {
+     
+        return await Movie.count();
 
+    }
+});
 server.route({
     method: 'GET',
     path:'/api/movies/{id}', 
@@ -54,6 +62,7 @@ server.route({
     }
 });
 
+
 server.route({
     method: 'PUT',
     path:'/api/movies/{id}', 
@@ -73,6 +82,7 @@ server.route({
     }
 });
 
+
 server.route({
     method: 'DELETE',
     path:'/api/movies/{id}', 
@@ -83,6 +93,7 @@ server.route({
 
     }
 });
+
 
 
 
