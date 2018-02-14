@@ -43,11 +43,13 @@ export class MenuComponent implements OnInit {
       });
       this.rows.shift();
       console.log(this.rows)
-    });
+      sessionStorage.setItem("catalog",JSON.stringify(this.catalogue))
+    })
+   
     this.movieService.getNumberOfMovies().then(result =>{
       this.count=(result as Number);
     });
-    
+     
 
   }
 
