@@ -25,7 +25,6 @@
    }
 }
 
-
 @media only screen and (max-width: 800px) {
   .movie{
 
@@ -39,7 +38,6 @@
     /* margin-bottom: 10px; */
   }
 }
-
 
 
 .movie:hover img{
