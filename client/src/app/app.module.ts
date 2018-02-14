@@ -9,21 +9,23 @@ import { MovieService } from './shared/movie.service';
 import { RowComponent } from './menu/row/row.component';
 import { RowItemComponent } from './menu/row/row-item/row-item.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+
 import { MovieResolver } from './shared/resolvers/movie.resolver'
 import { MovieCreateComponent } from './movie-create/movie-create.component';
 
 const routes: Routes=[
   {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'home', component:MenuComponent},
-  {path:'movies/:id', 
+  {path:'movies/:id',
     component:MovieDetailsComponent,
     resolve:{
       movie: MovieResolver
     }
+
   },
   {path:'movie/create',component:MovieCreateComponent}
   
-];
+]
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ const routes: Routes=[
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    RouterModule 
+    RouterModule
   ],
   providers: [MovieService,MovieResolver],
   bootstrap: [AppComponent]
