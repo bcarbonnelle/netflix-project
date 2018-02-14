@@ -9,14 +9,14 @@ import { Movie } from '../shared/models/movieModel';
 })
 export class MenuComponent implements OnInit {
   catalogue: Movie[]
-  
+
   rows: [Movie[]]
   count: Number;
-  constructor(public movieService: MovieService) { 
+  constructor(public movieService: MovieService) {
     this.catalogue = new Array;
     this.rows = [[]];
     this.count=0;
-    
+
 
   }
 
@@ -29,29 +29,29 @@ export class MenuComponent implements OnInit {
     this.movieService.getAll().then(result=> {
       count=(result as Movie[]).length;
       (result as Movie[]).map(movie=>{
-        
+
         this.catalogue.push(movie as Movie);
         row.push(movie as Movie);
         index++;
         count--;
-        if(index==4||count==0){
+        if (index == 4 || count == 0) {
           this.rows.push(row);
-          row=[];
-          index=0;
+          row = [];
+          index = 0;
         }
-        
+
       });
       this.rows.shift();
       console.log(this.rows)
       sessionStorage.setItem("catalog",JSON.stringify(this.catalogue))
     })
-   
+
     this.movieService.getNumberOfMovies().then(result =>{
       this.count=(result as Number);
     });
-     
+
+
+
 
   }
-
-
 }

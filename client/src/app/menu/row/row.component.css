@@ -4,3 +4,28 @@
     height: 450px;
     margin-bottom: 40px;
 }
+
+@media only screen and (max-width: 1400px) {
+  .row{
+    position: relative;
+    width: 1000px;;
+    height: 980px;
+    margin:0;
+
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .row{
+    position: relative;
+    width: 500px;;
+    height: 1800px;
+    margin:0;
+  }
+}
+.catalogue {
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
