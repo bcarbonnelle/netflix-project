@@ -9,28 +9,20 @@ import { MovieService } from './shared/movie.service';
 import { RowComponent } from './menu/row/row.component';
 import { RowItemComponent } from './menu/row/row-item/row-item.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { MovieResolver } from './shared/resolvers/movie.resolver'
+import { MovieResolver } from './shared/resolvers/movie.resolver';
+import { FormComponent } from './form/form.component'
 
-<<<<<<< HEAD
-const routes = [
-   { path: '', redirectTo: 'home', pathMatch: 'full' },
-   { path: 'home', conponent: RowComponent },
-   { path: 'movie/:id', component: RowItemComponent }
-];
-
-=======
 const routes: Routes=[
   {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'home', component:MenuComponent},
-  {path:'movies/:id', 
+  {path:'movies/:id',
     component:MovieDetailsComponent,
     resolve:{
       movie: MovieResolver
     }
   }
-  
+
 ];
->>>>>>> e694f7a972b3b3287e2868cc6d231902246221c6
 
 @NgModule({
   declarations: [
@@ -38,13 +30,14 @@ const routes: Routes=[
     MenuComponent,
     RowComponent,
     RowItemComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    RouterModule 
+    RouterModule
   ],
   providers: [MovieService,MovieResolver],
   bootstrap: [AppComponent]
