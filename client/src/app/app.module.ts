@@ -10,6 +10,7 @@ import { RowComponent } from './menu/row/row.component';
 import { RowItemComponent } from './menu/row/row-item/row-item.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieResolver } from './shared/resolvers/movie.resolver'
+import { MovieCreateComponent } from './movie-create/movie-create.component';
 
 const routes: Routes=[
   {path:'', redirectTo:'home', pathMatch:'full'},
@@ -19,7 +20,8 @@ const routes: Routes=[
     resolve:{
       movie: MovieResolver
     }
-  }
+  },
+  {path:'movie/create',component:MovieCreateComponent}
   
 ];
 
@@ -29,7 +31,8 @@ const routes: Routes=[
     MenuComponent,
     RowComponent,
     RowItemComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MovieCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,54 @@
+.detailsPage{
+    padding: 0;
+    position: relative;
+}
+.backgroundImage{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+.detailsPage h1{
+    position: absolute;
+    right: 0;
+    top:70px;
+    background-color: black;
+    color: white;
+    font-size: 3em;
+    padding: 40px;
+    opacity: 0.6;
+}
+.detailsMovie{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:400px;
+    background-color: black;
+    color: white;
+    width:80%;
+    padding: 40px;
+    
+}
+.detailsMovie img{
+    float: left;
+}
+.description{
+    float: right;
+    width: 70%;
+    text-align: right;
+}
+.description h2{
+    
+    margin-right: 200px;
+    margin-bottom: 80px;
+    font-size: 1.8em;
+    text-decoration-line: underline;
+}
+.description p{
+    
+        
+    font-size: 1.2em;
+    width: 90%;
+   
+}

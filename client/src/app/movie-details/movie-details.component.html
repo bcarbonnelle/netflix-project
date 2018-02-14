@@ -1,4 +1,16 @@
-<p>
-  movie-details works!
-{{movie.title}}
-</p>
+<div class="detailsPage">
+  <img class="backgroundImage" src="https://image.tmdb.org/t/p/original{{movie.backdrop_path}}" alt="">    
+  <h1>{{movie.title}}</h1>
+  <div class="detailsMovie">
+    
+      <img class="poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="">    
+      <div class="description">
+        <h2>Description</h2>
+        <p>{{movie.overview}}</p>
+      </div>
+      
+    
+  </div>
+
+</div>
+
